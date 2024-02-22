@@ -1,0 +1,71 @@
+<div #sideNav class="side-nav-container">
+    <div>
+      <img class="logo-img" src="./assets/images/logo.png">
+      <a routerLink="/dashboard/brands" class="side-nav-title" [ngClass]="{'active':activeTab[0]}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18.61" height="18.2" viewBox="0 0 18.61 18.2">
+            <g id="Icon" transform="translate(0.805 0.6)">
+              <rect id="Area" width="17" height="17" fill="#fcfcfc" opacity="0"/>
+              <g id="Icon-2" data-name="Icon">
+                <path id="e246f102-b78f-4238-b1a7-93bfced73ba5" d="M10.5,2,2,6.25l8.5,4.25L19,6.25Z" transform="translate(-2 -2)" fill="none" [attr.stroke]="!activeTab[0]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+                <path id="_0ab4a212-1d0d-4cc3-b9fd-ab1b4297ee3e" data-name="0ab4a212-1d0d-4cc3-b9fd-ab1b4297ee3e" d="M2,17l8.5,4.25L19,17" transform="translate(-2 -4.25)" fill="none" [attr.stroke]="!activeTab[0]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+                <path id="cd938b16-c62f-4ff2-98a5-4f07b7920089" d="M2,12l8.5,4.25L19,12" transform="translate(-2 -3.5)" fill="none" [attr.stroke]="!activeTab[0]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+              </g>
+            </g>
+          </svg> العلامة التجارية
+      </a>
+      <a routerLink="/dashboard/messages" class="side-nav-title" [ngClass]="{'active':activeTab[1]}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18.3" viewBox="0 0 17 18.3">
+          <g id="t" transform="translate(0 0.65)">
+            <rect id="Area" width="17" height="17" fill="#fcfcfc" opacity="0"/>
+            <g id="Icon" transform="translate(0 0.85)">
+              <path id="_46bcd18a-4f5f-4c63-9007-a289089c365f" data-name="46bcd18a-4f5f-4c63-9007-a289089c365f" d="M11.9,1.7H5.1A1.7,1.7,0,0,0,3.4,3.4V17a1.7,1.7,0,0,0,1.7,1.7H15.3A1.7,1.7,0,0,0,17,17V6.8Z" transform="translate(-1.7 -2.55)" fill="none" [attr.stroke]="!activeTab[1]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              <path id="_1e625beb-b845-496b-a312-6c920cee788b" data-name="1e625beb-b845-496b-a312-6c920cee788b" d="M11.9,1.7V6.8H17" transform="translate(-1.7 -2.55)" fill="none" [attr.stroke]="!activeTab[2]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              <line id="_5d3261e5-50c1-4fd2-a069-bdfab4759701" data-name="5d3261e5-50c1-4fd2-a069-bdfab4759701" x1="6.8" transform="translate(5.1 8.5)" fill="none" [attr.stroke]="!activeTab[1]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              <line id="eb523823-851e-4c85-a1ca-cdedf97bd7d0" x1="6.8" transform="translate(5.1 11.9)" fill="none" [attr.stroke]="!activeTab[1]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              <path id="_47f35ab1-43b9-49ca-8757-c3c17d8c969a" data-name="47f35ab1-43b9-49ca-8757-c3c17d8c969a" d="M8.5,7.65H6.8" transform="translate(-1.7 -2.55)" fill="none" [attr.stroke]="!activeTab[1]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+            </g>
+          </g>
+      </svg> رسائل عملائنا
+      </a>
+      <a routerLink="/dashboard/products" class="side-nav-title" [ngClass]="{'active':activeTab[2]}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18.2" height="17" viewBox="0 0 18.2 17">
+          <g id="w" transform="translate(0.6)">
+            <rect id="Area" width="17" height="17" fill="#fcfcfc" opacity="0"/>
+            <g id="Icon" transform="translate(0 0.85)">
+              <path id="_9aaf14b9-c615-45e3-b8da-f2c87fe5301d" data-name="9aaf14b9-c615-45e3-b8da-f2c87fe5301d" d="M4.55,14.9H3.7A1.7,1.7,0,0,1,2,13.2V4.7A1.7,1.7,0,0,1,3.7,3H17.3A1.7,1.7,0,0,1,19,4.7v8.5a1.7,1.7,0,0,1-1.7,1.7h-.85" transform="translate(-2 -3)" fill="none" [attr.stroke]="!activeTab[2]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+              <path id="_900433c2-f241-474c-a34c-7bfae7fbeb39" data-name="900433c2-f241-474c-a34c-7bfae7fbeb39" d="M11.25,15l4.25,5.1H7Z" transform="translate(-2.75 -4.8)" fill="none" [attr.stroke]="!activeTab[2]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+            </g>
+          </g>
+        </svg> المنتجات للبيع
+      </a>
+      
+    
+      <a routerLink="/dashboard/orders" class="side-nav-title" [ngClass]="{'active':activeTab[3]}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="18.3" viewBox="0 0 17 18.3">
+          <g id="e" transform="translate(0 0.65)">
+            <rect id="Area" width="17" height="17" fill="#fcfcfc" opacity="0"/>
+            <g id="Icon" transform="translate(0 0.85)">
+              <path id="a35ada2d-e7ad-4938-82f8-353426f3886d" d="M18.889,19.833V17.944a3.777,3.777,0,0,0-3.778-3.777H7.556a3.777,3.777,0,0,0-3.778,3.777v1.889" transform="translate(-2.833 -3.683)" fill="none" [attr.stroke]="!activeTab[3]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              <circle id="e14c40a5-4d34-409c-8c2a-d313c1ef73ee" cx="3.778" cy="3.778" r="3.778" transform="translate(4.722 -0.85)" fill="none" [attr.stroke]="!activeTab[3]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+            </g>
+          </g>
+        </svg> طلبات عملائنا
+      </a>
+      <!-- <a routerLink="/dashboard/reports" class="side-nav-title" [ngClass]="{'active':activeTab[4]}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18.552" height="18.397" viewBox="0 0 18.552 18.397">
+            <g id="i" transform="translate(0.805 0.747)">
+              <rect id="Area" width="17" height="17" fill="#fcfcfc" opacity="0"/>
+              <g id="Icon" transform="translate(0 0.85)">
+                <path id="b24a8f87-df6d-4fb8-aaad-f4690697d96f" d="M13.149,5.635a.9.9,0,0,0,0,1.253L14.58,8.319a.9.9,0,0,0,1.253,0L19.2,4.947a5.367,5.367,0,0,1-7.1,7.1L5.922,18.23a1.9,1.9,0,1,1-2.684-2.684L9.419,9.365a5.367,5.367,0,0,1,7.1-7.1L13.158,5.626Z" transform="translate(-2.683 -2.636)" fill="none" [attr.stroke]="!activeTab[4]?'#2c7fb2':'#ffffff'" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3"/>
+              </g>
+            </g>
+        </svg> التقارير
+      </a> -->
+      
+    
+    </div>
+    <div style="display: flex;flex-direction:column;align-items:center">
+      <div (click)="logOut()" class="mb-3" style="font-size: 16px;color:black;font-weight:400;display: flex;align-items: center;cursor: pointer;"><i style="color: #2C7FB2;font-size:18px;margin-inline-end: 7px;" class="fa fa-sign-out" aria-hidden="true"></i>تسجيل الخروج</div>
+    </div>
+
+</div>

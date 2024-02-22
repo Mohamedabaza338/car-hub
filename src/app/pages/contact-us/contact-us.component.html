@@ -1,0 +1,113 @@
+<div class="boxed_wrapper">
+
+   <app-second-header></app-second-header>
+   <app-breadcrumb [activePageName]="'تواصل معنا'"></app-breadcrumb>
+    
+    <section class="contact-form-area mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="inner-content">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="contact-form">
+                                <div class="sec-title">
+                                    <h1>قم بإرسال رسالة لنا</h1>
+                                    <span class="border"></span>
+                                </div>
+                                <form id="contact-form" name="contact_form" class="default-form" action="sendmail.php" method="post">
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group " style="position: relative;">
+                                                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                                                    <label for="Email">البريد الإلكتروني</label>
+                                                    <span *ngIf="Email.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                                                        <div *ngIf="Email.errors?.['required']">
+                                                            *
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <input name="Email" required #Email="ngModel" [(ngModel)]="email" id="Email" type="text" class="form-control" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" type="text" class="form-control" placeholder="البريد الإلكتروني">
+                                                <div *ngIf="Email.errors?.['pattern']" class="text-danger err-span">
+                                                    البريد الإلكتروني غير صحيح
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group " style="position: relative;">
+                                                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                                                    <label for="Name">الإسم</label>
+                                                    <span *ngIf="Name.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                                                        <div *ngIf="Name.errors?.['required']">
+                                                            *
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <input name="Name" required #Name="ngModel" [(ngModel)]="name" id="Name" type="text" class="form-control" placeholder="الإسم">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group " style="position: relative;">
+                                                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                                                    <label for="Subject">الموضوع</label>
+                                                    <span *ngIf="Subject.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                                                        <div *ngIf="Subject.errors?.['required']">
+                                                            *
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <input name="Subject" [ngModelOptions]="{standalone: true}" [(ngModel)]="subject" required #Subject="ngModel"  id="Subject" type="text" class="form-control" placeholder="الموضوع">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" style="position: relative;">
+                                                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                                                    <label for="Phone">رقم الهاتف</label>
+                                                    <span *ngIf="Phone.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                                                        <div *ngIf="Phone.errors?.['required']">
+                                                            *
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <input name="Phone" (keypress)="sharedService.numberOnly($event)" [ngModelOptions]="{standalone: true}" pattern="^01[0125][0-9]{8}$" [(ngModel)]="phone" required #Phone="ngModel"  id="Phone" type="tel" class="form-control" placeholder="رقم الهاتف">
+                                                <div *ngIf="Phone.errors?.['pattern']" class="text-danger err-span">
+                                                    رقم الهاتف غير صحيح
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group " style="position: relative;">
+                                                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                                                    <label for="Message">محتوي الرسالة</label>
+                                                    <span *ngIf="Message.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                                                        <div *ngIf="Message.errors?.['required']">
+                                                            *
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <textarea name="Message" [ngModelOptions]="{standalone: true}" [(ngModel)]="message" required #Message="ngModel" rows="3"  id="Message" type="text" class="form-control" placeholder="محتوي الرسالة"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                            <button (click)="sendMessage()" [disabled]="Name.invalid || Phone.invalid || Email.invalid || Subject.invalid || Message.invalid" class="thm-btn bgclr-1 btn" type="submit" data-loading-text="Please wait...">إرسال الرسالة</button>
+                                        </div>
+                                    </div>
+                                </form>  
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-footer></app-footer>
+    
+</div>

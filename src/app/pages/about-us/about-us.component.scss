@@ -1,0 +1,306 @@
+.boxed_wrapper {
+    background: #fff none repeat scroll 0 0;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+// first section
+.sec-padding {
+    padding: 80px 0;
+}
+.welcome-area .text-holder {
+    position: relative;
+    overflow: hidden;
+}
+.sec-title {
+    margin-top: -5px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.sec-title h1 {
+    color: #222222;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: none;
+}
+.sec-title h1 span {
+    color: #233588;
+}
+.sec-title .border {
+    width: 80px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: transparent;
+    height: 5px;
+    margin: 11px 0 0;
+}
+.sec-title .border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title .border:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.welcome-area .text-holder .text-box {
+    margin-top: -7px;
+}
+.welcome-area .text-holder .text-box .name-signature {
+    overflow: hidden;
+    margin-top: 30px;
+}
+.welcome-area .text-holder .text-box .name-signature .name {
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+}
+.welcome-area .text-holder .text-box .name-signature .name h3 {
+    color: #222222;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 5px;
+}
+.welcome-area .text-holder .text-box .name-signature .name h3 span {
+    color: #848484;
+    font-style: italic;
+    font-weight: 400;
+}
+.welcome-area .text-holder .text-box .name-signature .name p {
+    margin: 0;
+    color: #233588;
+    font-style: italic;
+}
+.welcome-area .text-holder .text-box .name-signature .signature {
+    float: left;
+}
+.welcome-area .video-holder {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.welcome-area .video-holder img {
+    transform: scale(1);
+    transition: all 0.5s ease 0s;
+    width: 100%;
+}
+.welcome-area .video-holder .overlay-gallery {
+    background-color: transparent;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    transition: all 500ms ease;
+}
+.welcome-area .video-holder .overlay-gallery .icon-holder {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.welcome-area .video-holder .overlay-gallery .icon-holder .icon {
+    display: table-cell;
+    vertical-align: middle;
+}
+.welcome-area .video-holder .overlay-gallery .icon-holder .icon a img {
+    width: auto;
+    transform: scale(1);
+    transition: all 0.5s ease 0s;
+}
+
+.welcome-area .video-holder img {
+    transform: scale(1);
+    transition: all 0.5s ease 0s;
+    width: 100%;
+}
+.contact-info-area {
+    padding-bottom: 80px;
+}
+.contact-info-area .title {
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+.contact-info-area .title h2 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 0 0 5px;
+}
+.contact-info-area .title p {
+    margin: 0;
+}
+.contact-info-area .single-box {
+    border: 1px solid #f4f4f4;
+    display: block;
+    padding: 26px 30px 25px;
+}
+.contact-info-area .single-box .top {
+    overflow: hidden;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f4f4f4;
+}
+.contact-info-area .single-box .top h3 {
+    font-size: 20px;
+}
+.contact-info-area .single-box .top h3 span:before {
+    display: inline-block;
+    padding-right: 5px;
+}
+.contact-info-area .single-box .text {
+    display: block;
+    padding-top: 25px;
+}
+.contact-info-area .single-box .text h1 {
+    color: #233588;
+    font-size: 30px;
+    font-weight: 400;
+    display: block;
+    margin: 0 0 15px;
+}
+.contact-info-area .single-box .text p {
+    margin: 0;
+}
+.contact-info-area .single-box .working-hour {
+    overflow: hidden;
+    padding-top: 17px;
+}
+.contact-info-area .single-box .working-hour li {
+    line-height: 36px;
+}
+.contact-info-area .single-box .working-hour li span {
+    float: right;
+}
+.contact-info-area .single-box .newsletter-form {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin-top: 30px;
+}
+.contact-info-area .single-box .newsletter-form p {
+    margin: 18px 0 0;
+}
+.contact-info-area .single-box .newsletter-form form input[type=email] {
+    background: #ffffff;
+    border: 1px solid #f4f4f4;
+    color: #848484;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    height: 50px;
+    padding-left: 15px;
+    padding-right: 40px;
+    position: relative;
+    -webkit-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+    width: 100%;
+    border-radius: 0px;
+    position: relative;
+    text-align: left;
+}
+.contact-info-area .single-box .newsletter-form form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 50px;
+    text-align: center;
+}
+button {
+    border: none;
+    background: transparent;
+}
+.choosing-area {
+    background: #f9f9f9;
+    padding-bottom: 22px;
+    padding-top: 80px;
+}
+.choosing-area .sec-title {
+    padding-bottom: 50px;
+}
+.choosing-area .single-item {
+    margin-bottom: 50px;
+    padding-left: 70px;
+    position: relative;
+}
+.choosing-area .single-item .icon-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.choosing-area .single-item .content {
+    padding-left: 30px;
+}
+.choosing-area .single-item .content h3 {
+    color: #222222;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 12px;
+}
+.choosing-area .single-item .content p {
+    margin: 0 0 12px;
+}
+.choosing-area .single-item .content a {
+    color: #222222;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Nunito', sans-serif;
+}
+.choosing-area .single-item .content a i {
+    display: inline-block;
+    padding-left: 5px;
+}
+.slogan-area {
+    padding: 30px 0;
+    background: #233588;
+    position: relative;
+    overflow: hidden;
+}
+.slogan-area h1 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 32px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 9px 0;
+}
+.slogan-area a {
+    width: 230px;
+    border: 1px solid #ffffff;
+}
+
+.thm-btn {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 500ms ease;
+    font-family: 'Nunito', sans-serif;
+    display: block;
+    border-radius: 30px;
+    padding: 12px 25px 10px;
+    transition: all 500ms ease;
+}

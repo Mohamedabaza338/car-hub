@@ -1,0 +1,149 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading" class="boxed_wrapper">
+    <app-second-header></app-second-header>
+    
+    <app-breadcrumb [activePageName]="'السيارات المنشورة'"></app-breadcrumb>
+    <section class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                <h3 class="section-title title-bar-primary2 mt-5 mb-2" style="text-align: center;">السيارات المنشورة</h3>
+                <!-- Serach By -->
+                <div class="row">
+                    <div class="form-group col-lg-4 mt-3">
+                        <label for="TransmissionType">الحالة</label>
+                        <ng-select class="form-control-select" [items]="conditionsArr" bindLabel="text" bindValue="value" [(ngModel)]="condition" [ngModelOptions]="{ standalone: true }" placeholder="إبحث بالحالة"></ng-select>
+                    </div>
+                    <div class="form-group col-lg-4 mt-3">
+                        <label for="TransmissionType">نوع التحويل</label>
+                        
+                        <ng-select class="form-control-select" [items]="fuelTypeArr" bindLabel="text" bindValue="value" [(ngModel)]="fuelType" [ngModelOptions]="{ standalone: true }" placeholder="إبحث بنوع التحويل"></ng-select>
+                    </div>
+                    <div class="form-group col-lg-4 mt-3">
+                        <label for="Price">سيارة ذوي القدرات الخاصة</label>
+                        <ng-select class="form-control-select" [items]="disabledArr" bindLabel="text" bindValue="value" [(ngModel)]="disableValue" [ngModelOptions]="{ standalone: true }" placeholder="سيارة ذوي القدرات الخاصة"></ng-select>
+                    </div>
+                </div>
+                <div class="row" style="justify-content: start;">
+                    <div style="display: flex;align-items: end; width: fit-content;">
+                        <div (click)="onSearch()" style="height: fit-content;" class="btn btn-primary mt-2"><i class="fa fa-search"> </i> بحث </div>
+                    </div>
+                    <div class="form-group col-lg-4 mt-3">
+                        <label for="Price">السعر إلي</label>
+                        <input (keypress)="sharedService.numberOnly($event)" class="form-control"  [(ngModel)]="priceTo" [ngModelOptions]="{ standalone: true }" placeholder="السعر إلي"/>
+                    </div>
+                    <div class="form-group col-lg-4 mt-3">
+                        <label for="Price">السعر من</label>
+                        <input (keypress)="sharedService.numberOnly($event)" class="form-control" [(ngModel)]="priceFROM" [ngModelOptions]="{ standalone: true }" placeholder="السعر من"/>
+                    </div>
+
+                </div>
+
+                <!-- List -->
+                <div *ngIf="carsArr.length!=0" class="blog-post mt-5">
+                    <div class="item mb-4" *ngFor="let car of carsArr | paginate : {itemsPerPage: limit,currentPage: page,totalItems: total}">
+                        <div class="img-holder"  >
+                                <img style="width: 100%; height:100%;" src="https://localhost:7285/{{car.carImages[0].carimg}}" alt="Awesome Image">
+                        </div>
+                        <div class="content-container">
+                                <div class="price">
+                                    <span style="color: #233588;">{{car.price}} جنيه</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span><span style="font-weight: bold;">نوع الإعلان : </span>{{car.adType}}</span>
+                                    <span><span style="font-weight: bold;">الحالة : </span>{{car.conditions=='Used' ? "مستعمل" : "جديد"}}</span>
+                                    <span><span style="font-weight: bold;">سنة التصنيع : </span>{{car.manufacturedYear}}</span>
+                                </div>
+                                <div class="title">{{car.details}}</div>
+                                <div (click)="addOrRemoveFavourite(car)"class="icon-heart"><i [ngClass]="{'fav': car.isFav,'fa-heart': car.isFav , 'fa-heart-o' : !car.isFav}" class="fa"></i></div>
+
+                                <div>
+                                    <span class="location">{{car.color}}<span style="margin: 0 0.4rem;">•</span></span>
+                                    <span class="location">{{car.transmissionType}}<span style="margin: 0 0.4rem;">•</span></span>
+                                    <span class="location">{{car.fuelType=="Manual" ? "مانوال" : "اتوماتيك"}}<span style="margin: 0 0.4rem;">•</span></span>
+                                    <span >{{car.manufacturedYear}}</span><span style="margin: 0 0.4rem;">•</span>
+                                    <span>{{car.disabled==true? "سيارة ذوي قدرات خاصة":""}}</span>
+                                </div>
+                                <button (click)="getPublisherFun(modal,car)" class="btn btn-primary mt-3">
+                                    بيانات الناشر
+                                </button>
+                        </div>
+                        
+                    </div>
+                   
+                    <div class="pagenation-container" *ngIf="carsArr.length!=0">
+                        <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+                    </div>
+                </div>
+
+                <div class="hasNoData" *ngIf="carsArr.length==0">
+                    لا يوجد بيانات
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <app-footer></app-footer> 
+    
+</div>
+
+<ng-template #modal let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">بيانات الناشر</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="custom-form">
+                <div class="col-12 offset-1">
+                    <div class="d-flex widget widget-about-team">
+                        <div class="first-row-container">
+                            <div class="image-container" style="cursor: pointer;">
+                                <img style="width: 100px; height: 100px; object-fit: cover;" src="https://localhost:7285/{{publisherData.logo}}" alt="">
+                            </div>
+                        </div>
+                        <div class="item-content" style="margin-right: 15px;">
+                            <h3 class="item-title">{{publisherData.userName}}</h3>
+                            <div class="product-rate d-inline-block">
+                                <i [ngClass]="{'check': publisherData.rate>=1}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': publisherData.rate>=2}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': publisherData.rate>=3}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': publisherData.rate>=4}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': publisherData.rate==5}" class="fa fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>الإسم</label>
+                            <span class="form-control" readonly>{{publisherData.userName}}&nbsp;</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>رقم الهاتف</label>
+                            <span class="form-control" readonly>{{publisherData.phoneNumber}}&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="col-lg-6">
+                            <label>البريد الإلكتروني</label>
+                            <span class="form-control" readonly>{{publisherData.email}}&nbsp;</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>العنوان</label>
+                            <span class="form-control" readonly>{{publisherData.address}}&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button routerLink="/profile/{{publisherData.ownerId}}" (click)="modal.close()" class="btn btn-primary" type="button">الذهاب إالي الملف الشخصي</button>
+            <button (click)="modal.close()" class="btn btn-danger" type="button">إغلاق</button>
+
+
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,95 @@
+<div class="boxed_wrapper">
+    <app-second-header></app-second-header>
+    
+    <app-breadcrumb [activePageName]="'السيارات المفضلة لدي'"></app-breadcrumb>
+    <section class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                <h3 class="section-title title-bar-primary2 mt-5 mb-5" style="text-align: center;">السيارات المفضلة لديك</h3>
+                <div *ngIf="ListingcarsArr.length>0" class="blog-post">
+                    <div class="item mb-4" *ngFor="let car of ListingcarsArr | paginate : {itemsPerPage: limit,currentPage: page,totalItems: total}">
+                        <div class="img-holder"  >
+                                <img style="width: 100%; height:100%;" src="https://localhost:7285/{{car.carImages[0].carimg}}" alt="Awesome Image">
+                        </div>
+                        <div class="content-container">
+                            <div class="price">
+                                <span style="color: #233588;">{{car.price}} جنيه</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><span style="font-weight: bold;">نوع الإعلان : </span>{{car.adType}}</span>
+                                <span><span style="font-weight: bold;">الحالة : </span>{{car.conditions=='Used' ? "مستعمل" : "جديد"}}</span>
+                                <span><span style="font-weight: bold;">سنة التصنيع : </span>{{car.manufacturedYear}}</span>
+                            </div>
+                            <div class="title">{{car.details}}</div>
+                            <div (click)="removeFavourite(car)"class="icon-heart"><i [ngClass]="{'fav': car.isFav,'fa-heart': car.isFav , 'fa-heart-o' : !car.isFav}" class="fa"></i></div>
+    
+                            <div>
+                                <span class="location">{{car.color}}<span style="margin: 0 0.4rem;">•</span></span>
+                                <span class="location">{{car.transmissionType}}<span style="margin: 0 0.4rem;">•</span></span>
+                                <span class="location">{{car.fuelType=="Manual" ? "مانوال" : "اتوماتيك"}}<span style="margin: 0 0.4rem;">•</span></span>
+                                <span >{{car.manufacturedYear}}</span><span style="margin: 0 0.4rem;">•</span>
+                                <span>{{car.disabled==true? "سيارة ذوي قدرات خاصة":""}}</span>
+                            </div>
+                            <button (click)="getPublisherFun(modal,car)" class="btn btn-primary mt-3">
+                                بيانات الناشر
+                            </button>
+                        </div>
+                    </div>
+                   
+                    <div class="pagenation-container" >
+                        <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+                    </div>
+                </div>
+                <div class="hasNoData" *ngIf="ListingcarsArr.length==0">
+                    قائمة المفضلة لديك فارغة
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <app-footer></app-footer> 
+    
+</div>
+
+<ng-template #modal let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">بيانات الناشر</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="custom-form">
+                <div class="col-12 offset-1">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>الإسم</label>
+                            <span class="form-control" readonly>{{publisherData.userName}}&nbsp;</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>رقم الهاتف</label>
+                            <span class="form-control" readonly>{{publisherData.phoneNumber}}&nbsp;</span>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <div class="col-lg-6">
+                            <label>البريد الإلكتروني</label>
+                            <span class="form-control" readonly>{{publisherData.email}}&nbsp;</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>العنوان</label>
+                            <span class="form-control" readonly>{{publisherData.address}}&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button routerLink="/profile/{{publisherData.ownerId}}" (click)="modal.close()" class="btn btn-primary" type="button">الذهاب إالي الملف الشخصي</button>
+            <button (click)="modal.close()" class="btn btn-danger" type="button">إغلاق</button>
+
+
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,47 @@
+<div class="boxed_wrapper">
+
+    <app-second-header></app-second-header>
+    <app-breadcrumb [activePageName]="'عملائنا من معارض السيارات'"></app-breadcrumb>
+    <section class="team-page-area">
+        <div class="container">
+            <div  class="row masonary-layout" style="justify-content: start;">
+                <div *ngFor="let client of allExpertsArr" class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div routerLink="/profile/{{client.userId}}" style="cursor: pointer;" class="single-team-member">
+                        <div class="img-holder">
+                            <img style="width: 100%; height: 100%;" src="https://localhost:7285/{{client.logo}}" alt="Awesome Image">
+                            <div class="overlay-style-one">
+                                <div class="box">
+                                    <div class="content">
+                                        <ul>
+                                            <li><a target="_blank" href="https://www.facebook.com/RamaMotorseg?mibextid=ZbWKwL"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a target="_blank" href="https://www.twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a target="_blank" href="https://instagram.com/rama_motors_?igshid=MzRlODBiNWFlZA=="><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <h3>{{client.userName}}</h3>
+                            <div class="product-rate d-inline-block">
+                                <i [ngClass]="{'check': client.rate>=1}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': client.rate>=2}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': client.rate>=3}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': client.rate>=4}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': client.rate==5}" class="fa fa-star"></i>
+                            </div>
+                            <div class="bottom">
+                                <ul>
+                                    <li> <i class="fa fa-phone check" aria-hidden="true"></i> {{client.phoneNumber}} </li>
+                                    <li> <i class="fa fa-map-pin check" aria-hidden="true"></i> {{client.address}} </li>
+                                </ul>
+                            </div>
+                        </div>    
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+  <app-footer></app-footer>
+    
+</div>

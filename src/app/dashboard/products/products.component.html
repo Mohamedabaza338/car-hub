@@ -1,0 +1,105 @@
+<div dir="rtl" class="dashboard-container">
+    <app-sidebar></app-sidebar>
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading" class="table-container">
+        <div style="display:flex;justify-content: space-between;">
+            <button (click)="sharedService.openLg(AddProductModal)" class="btn btn-primary">إضافة منتج</button>
+          <div class="search-input-container search-form-2 m-auto col-lg-9">
+            <i class="fa fa-search"></i>
+            <input style="background-color: #dee2e6 !important;" (keyup.enter)="onSearch()" [(ngModel)]="search" type="text" class="form-control mb-0 border-0" placeholder="إبحث هنا">
+          </div>
+        </div>
+        <div  style="overflow-x: auto">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>صورة المنتج</th>
+                        <th>إسم المنتج</th>
+                        <th>الوصف</th>
+                        <th>السعر</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="productArr.length!=0">
+                    <tr *ngFor=" let product of productArr | paginate : { itemsPerPage: limit, currentPage: page, totalItems: total };let i = index">
+                        <td class="number-table"> {{ ((page-1)*10) +i+1}} </td>
+                        <td class="number-table"> <img style="width: 50px;height: 50px; object-fit: cover;" src="https://localhost:7285/{{product.image}}" alt=""></td>
+                        <td class="name-table">{{product.name? product.name :"-"}}</td>
+                        <td class="name-table">{{product.descriptions? product.descriptions :"-"}}</td>
+                        <td dir="ltr">{{ product.price ? product.price : "-"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div *ngIf="productArr.length!=0" class="pagenation-container">
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+            </div>
+        </div>
+        <div class="hasNoData" *ngIf="productArr.length==0">
+            لا توجد بيانات
+        </div>
+    </div>
+</div>
+
+<ng-template #AddProductModal let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel"> إضافة منتج</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="first-row-container">
+                <div (click)="Photo.click()" class="image-container" style="cursor: pointer;">
+                    <i *ngIf="!photo" class="fa fa-camera"></i>
+                    <img *ngIf="photo" [src]="url" alt="">
+                </div>
+    
+                <div style="margin: 0 15px;position: relative;">
+                    <p style="font-size:14px;margin: 0;">صورة المنتج</p>
+                    <p style="font-size:16px;color:#707070;">Upload Image 40*40</p>
+                    <input (change)="selectImg($event)" required [(ngModel)]="photo" #Photo type="file" name="" class="inputFile">
+                </div>
+            </div>
+            <div class="row mt-3" >
+                <div class="col-lg-12">
+                  <div style="display: flex; flex-wrap: nowrap; height: 30px;justify-content: right;">
+                    <label>الإسم</label>
+                    <span *ngIf="NameOfProduct.invalid && NameOfProduct.errors?.['required']" class="alert" style="color: red; white-space: nowrap; line-height: 0; padding: 0; margin-top: 8px;">
+                      *
+                    </span>
+                  </div>
+                  <input type="text" id="NameOfProduct" required #NameOfProduct="ngModel" class="form-control" [(ngModel)]="name" [ngModelOptions]="{ standalone: true }"/>
+                </div>
+            </div>
+            <div class="row mt-3" >
+                <div class="col-lg-12">
+                  <div style="display: flex; flex-wrap: nowrap; height: 30px;justify-content: right;">
+                    <label>الوصف</label>
+                    <span *ngIf="Description.invalid && Description.errors?.['required']" class="alert" style="color: red; white-space: nowrap; line-height: 0; padding: 0; margin-top: 8px;">
+                      *
+                    </span>
+                  </div>
+                  <input type="text" id="Description" required #Description="ngModel" class="form-control" [(ngModel)]="description" [ngModelOptions]="{ standalone: true }"/>
+                </div>
+            </div>
+            
+            <div class="row mt-3" >
+                <div class="col-lg-12">
+                  <div style="display: flex; flex-wrap: nowrap; height: 30px;justify-content: right;">
+                    <label>السعر</label>
+                    <span *ngIf="Price.invalid && Price.errors?.['required']" class="alert" style="color: red; white-space: nowrap; line-height: 0; padding: 0; margin-top: 8px;">
+                      *
+                    </span>
+                  </div>
+                  <input type="number" id="Price" required #Price="ngModel" class="form-control" [(ngModel)]="price" [ngModelOptions]="{ standalone: true }"/>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="addProduct(modal)" [disabled]="!photo || NameOfProduct.invalid || Description.invalid || Price.invalid" class="btn btn-primary" type="button">إضافة منتج</button>
+            <button type="button" class="btn btn-danger"  (click)="modal.dismiss('Cross click')">إغلاق</button>
+        </div>
+    </div>
+</ng-template>

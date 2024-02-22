@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="container">
+    <ngx-braintree 
+      [clientTokenURL]="'https://localhost:7285/api/premium/GenerateToken'" 
+      [createPurchase] = "createPurchase"
+      [chargeAmount]="55.55"
+      (paymentStatus)="onPaymentStatus($event)">
+    </ngx-braintree>
+  </div>
+</div>

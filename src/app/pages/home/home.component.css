@@ -1,0 +1,125 @@
+.main-banner-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-wrapper {
+  display: inline;
+}
+
+.single-banner-slide {
+  height: 750px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.single-banner-slide:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(34, 36, 38, 0.4);
+  z-index: 2;
+}
+
+.slide-content {
+  position: absolute;
+  width: 100%;
+  bottom: 20%;
+  right: 0%;
+  z-index: 20;
+  text-align: left;
+}
+
+.slide-wrapper .container {
+  padding: 0px;
+}
+
+.slide-content .large_txt p {
+  -webkit-transition: none 0s ease 0s;
+  transition: none 0s ease 0s;
+  line-height: 72px;
+  border-width: 0px;
+  margin: 0px 0px 40px;
+  padding: 0px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 70px;
+}
+
+.slider_text {
+  -webkit-transition: none 0s ease 0s;
+  transition: none 0s ease 0s;
+  line-height: 36px;
+  border-width: 0px;
+  margin: 0px 0px 95px;
+  padding: 0px;
+  letter-spacing: 0px;
+  font-weight: 300;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.slider_text p {
+  color: #ffffff;
+}
+
+.slide-content a {
+  margin: 0 15px;
+}
+
+a.slider_readmore {
+  border: 2px solid #233588;
+  background-color: #233588;
+  padding: 15px 50px 14px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 30px;
+  margin: 10px 0;
+}
+
+a.slider_readmore:hover {
+  background-color: white;
+  padding: 15px 50px 14px;
+  color: #233588;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+a:hover, a:focus, a:visited {
+  text-decoration: none;
+  outline: none;
+  color: #ffffff;
+}
+
+i.fa.fa-angle-right {
+  margin-left: 9px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.img_box img {
+  position: absolute;
+  top: calc(100px - -92px);
+  z-index: 9;
+  left: 0px;
+}
+
+@media (max-width: 1399px) {
+  .slide-content .large_txt p {
+    font-size: 65px;
+    line-height: 80px;
+    color: white;
+  }
+}
+/*# sourceMappingURL=home.component.css.map */

@@ -1,0 +1,372 @@
+<div class="boxed_wrapper">
+    <app-second-header></app-second-header>
+    
+    <app-breadcrumb [activePageName]="'الصفحة الشخصية'"></app-breadcrumb>
+    <section class="team-details-wrap-layout1 bg-light-accent100">
+        <div class="container">
+            <div class="row">
+                <div *ngIf="carAgentData" class="order-xl-2 order-lg-2 sidebar-widget-area sidebar-break-md col-xl-4 col-lg-5 col-md-12 col-12">
+                    <div class="d-flex widget widget-about-team">
+                        <div class="first-row-container">
+                            <div class="image-container" style="cursor: pointer;">
+                                <img  src="https://localhost:7285/{{carAgentData.logo}}" alt="">
+                            </div>
+                        </div>
+                        <div class="item-content" style="margin-right: 15px;">
+                            <h3 class="item-title">{{carAgentData.userName}}</h3>
+                            <div class="product-rate d-inline-block">
+                                <i [ngClass]="{'check': carAgentData.rate>=1}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': carAgentData.rate>=2}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': carAgentData.rate>=3}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': carAgentData.rate>=4}" class="fa fa-star"></i>
+                                <i [ngClass]="{'check': carAgentData.rate==5}" class="fa fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="widget widget-team-contact">
+                        <h3 class="section-title title-bar-primary2">الموقع</h3>
+                        <google-map #mapp height="200px" width="100%" [center]="center" >
+                            <map-marker [position]="loc"
+                                        [options]="markerOptions"></map-marker>
+                        </google-map>
+                        
+                    </div>
+                    <div class="widget widget-team-contact">
+                        <h3 class="section-title title-bar-primary2">المعلومات الشخصية</h3>
+                        <ul>
+                            <li>العنوان: <span>{{carAgentData.address}}</span></li>
+                            <li>التليفون: <span>{{carAgentData.phoneNumber}}</span></li>
+                            <li>البريد الإلكتروني: <span>{{carAgentData.email}}</span></li>
+                            
+                        </ul>
+                    </div>
+                   
+                </div>
+                <div class="order-xl-1 order-lg-1 col-xl-8 col-lg-7 col-md-12 col-12">
+                    <div class="tab-style3">
+                        <ul class="nav nav-tabs text-uppercase">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="Cars-tab" data-bs-toggle="tab" href="#Cars">السيارات المنشورة</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">التقييمات ({{countOfReviews}})</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content shop_info_tab entry-main-content">
+                            <div class="tab-pane fade" id="Reviews">
+                                <div class="team-detail-box-layout1">
+                                    <div class="comments-area">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="section-title title-bar-primary2">تقييمات وأراء العملاء</h3>
+                                                <div class="comment-list">
+                                                    <div *ngFor="let review of reviews" class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img  src="../../../assets/images/user.png" alt="">
+                                                            </div>
+                                                            <div class="desc">
+                                                                <h4>{{review.userName}}</h4>
+                                                                <div class="product-rate d-inline-block">
+                                                                    <i [ngClass]="{'check': review.rate>=1}" class="fa fa-star"></i>
+                                                                    <i [ngClass]="{'check': review.rate>=2}" class="fa fa-star"></i>
+                                                                    <i [ngClass]="{'check': review.rate>=3}" class="fa fa-star"></i>
+                                                                    <i [ngClass]="{'check': review.rate>=4}" class="fa fa-star"></i>
+                                                                    <i [ngClass]="{'check': review.rate==5}" class="fa fa-star"></i>
+                                                                </div>
+                                                                <p>{{review.review}}</p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--comment form-->
+                                    <div class="comment-form">
+                                        <h4 class="mb-15">إضافة تقييم</h4>
+                                        <div class="product-rate d-inline-block mb-30">
+                                            <span (click)="addReviewRate(1)" [ngClass]="{'check': rate>=1}" class="fa fa-star"></span>
+                                            <span (click)="addReviewRate(2)" [ngClass]="{'check': rate>=2}" class="fa fa-star"></span>
+                                            <span (click)="addReviewRate(3)" [ngClass]="{'check': rate>=3}" class="fa fa-star"></span>
+                                            <span (click)="addReviewRate(4)" [ngClass]="{'check': rate>=4}" class="fa fa-star"></span>
+                                            <span (click)="addReviewRate(5)" [ngClass]="{'check': rate==5}" class="fa fa-star"></span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12">
+                                                <form class="form-contact comment_form" action="#" id="commentForm">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <textarea [(ngModel)]="review" class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="كتابة تعليق"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button (click)="addReview()" [disabled]="!review || !rate" class="btn btn-primary" fdprocessedid="8l6a4">إضافة تقييم</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade active show" id="Cars">
+                                <div class="team-detail-box-layout1">
+                                    <div class="single-item">
+                                        <h3 class="section-title title-bar-primary2">السيارات المنشورة</h3>
+                                        <div *ngIf="agenceId === userId " (click)="sharedService.openLg(addCar)" class="col-lg-5 col-md-4 col-5 btn btn-primary mb-2 "><i class="fa fa-plus"> </i> إضافة سيارة  </div>
+                                        <div class="blog-post">
+                                            <div class="item mb-3" *ngFor="let car of carsArr | paginate : {itemsPerPage: limit,currentPage: page,totalItems: total}">
+                                                <div *ngIf="car && car.carImages.length != 0" class="img-holder">
+                                                        <img style="height: 100%" src="https://localhost:7285/{{car.carImages[0].carimg}}" alt="Awesome Image">
+                                                </div>
+                                                <div class="content-container">
+                                                        <div class="price">
+                                                            <span style="color: #233588;">{{car.price}} جنيه</span>
+                                                        </div>
+                                                        <div style="display: flex; justify-content: space-between;">
+                                                            <span><span style="font-weight: bold;">نوع الإعلان : </span>{{car.adType}}</span>
+                                                            <span><span style="font-weight: bold;">الحالة : </span>{{car.conditions=='Used' ? "مستعمل" : "جديد"}}</span>
+                                                            <span><span style="font-weight: bold;">سنة التصنيع : </span>{{car.manufacturedYear}}</span>
+                                                        </div>
+                                                        <div class="title">{{car.details}}</div>
+                                                        <div *ngIf="agenceId === userId " (click)="deleteCar(deleteCarModal,car.id)" class="icon-heart"><i class="fa fa-trash"></i></div>
+            
+                                                        <div>
+                                                            <span class="location">{{car.color}}<span style="margin: 0 0.4rem;">•</span></span>
+                                                            <span class="location">{{car.transmissionType}}<span style="margin: 0 0.4rem;">•</span></span>
+                                                            <span class="location">{{car.fuelType=="Manual" ? "مانوال" : "اتوماتيك"}}<span style="margin: 0 0.4rem;">•</span></span>
+                                                            <span >{{car.manufacturedYear}}</span><span style="margin: 0 0.4rem;">•</span>
+                                                            <span>{{car.disabled==true? "سيارة ذوي قدرات خاصة":""}}</span>
+                                                        </div>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                            <div class="pagenation-container" *ngIf="carsArr.length!=0">
+                                                <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+  
+    <app-footer></app-footer> 
+    
+</div>
+
+<ng-template #addCar let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel"> إضافة سيارة جديدة</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="first-row-container">
+                <div (click)="Photo.click()" class="image-container" style="cursor: pointer;">
+                    <i *ngIf="!photo" class="fa fa-camera"></i>
+                    <img *ngIf="photo" [src]="url" alt="">
+                </div>
+
+                <div style="margin: 0 15px;position: relative;">
+                    <p style="font-size:14px;margin: 0;"> صورة السيارة</p>
+                    <p style="font-size:16px;color:#707070; "> رفع صورة 40*40</p>
+                    <input (change)="selectCarImg($event)" required [(ngModel)]="photo" #Photo type="file" name="" class="inputFile">
+                </div>
+            </div>
+            <div class="row ">
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Price">السعر</label>
+                        <span *ngIf="Price.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Price.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <input (keypress)="sharedService.numberOnly($event)" type="text" #Price="ngModel" required id="Price" class="form-control" [(ngModel)]="price" [ngModelOptions]="{ standalone: true }" placeholder="السعر">
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="AdType"> نوع الإعلان</label>
+                        <span *ngIf="AdType.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="AdType.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #AdType="ngModel" required id="AdType" class="form-control-select" [items]="adTypeArr" bindLabel="text" bindValue="text" [(ngModel)]="adType" [ngModelOptions]="{ standalone: true }" placeholder="نوع الإعلان"></ng-select>
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Condition">الحالة</label>
+                        <span *ngIf="Condition.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Condition.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #Condition="ngModel" required id="Condition" class="form-control-select" [items]="conditionsArr" bindLabel="text" bindValue="id" [(ngModel)]="condition" [ngModelOptions]="{ standalone: true }" placeholder="الحالة"></ng-select>
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Fuel">نوع الوقود</label>
+                        <span *ngIf="Fuel.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Fuel.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #Fuel="ngModel" required id="Fuel" class="form-control-select" [items]="fuelTypeArr" bindLabel="text" bindValue="id" [(ngModel)]="fuelType" [ngModelOptions]="{ standalone: true }" placeholder="نوع الوقود"></ng-select>
+                </div>
+
+                
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Model">الموديل</label>
+                        <span *ngIf="Model.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Model.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select [disabled]="!brandId" #Model="ngModel" required id="Model" class="form-control-select" [items]="modelsArr" bindLabel="modelName" bindValue="id" [(ngModel)]="modelId" [ngModelOptions]="{ standalone: true }" placeholder="الموديل"></ng-select>
+                </div>
+                
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Brand">العلامة التجارية</label>
+                        <span *ngIf="Brand.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Brand.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select (change)="selectBrand($event)" #Brand="ngModel" required id="Brand" class="form-control-select" [items]="brandsArr" bindLabel="typeName" bindValue="id" [(ngModel)]="brandId" [ngModelOptions]="{ standalone: true }" placeholder="العلامة التجارية"></ng-select>
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Year">سنة الإنتاج</label>
+                        <span *ngIf="Year.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Year.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <input type="date" #Year="ngModel" required id="Year" class="form-control"  [(ngModel)]="manufacturedYear" [ngModelOptions]="{ standalone: true }" placeholder="سنة الإنتاج">
+                </div>
+                
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="TransmissionType">نوع التحويل</label>
+                        <span *ngIf="TransmissionType.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="TransmissionType.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #TransmissionType="ngModel" required id="TransmissionType" class="form-control-select" [items]="transmissionTypeArr" bindLabel="text" bindValue="id" [(ngModel)]="transmissionType" [ngModelOptions]="{ standalone: true }" placeholder="نوع التحويل"></ng-select>
+                </div>
+                
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Color">اللون</label>
+                        <span *ngIf="Color.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Color.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <input type="text" #Color="ngModel" required id="Color" class="form-control" [(ngModel)]="color" [ngModelOptions]="{ standalone: true }" placeholder="اللون">
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Disabled">سيارة ذوي قدرات خاصة</label>
+                        <span *ngIf="Disabled.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Disabled.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #Disabled="ngModel" required id="Disabled" class="form-control-select" [items]="disabledArr" bindLabel="text" bindValue="value" [(ngModel)]="disableValue" [ngModelOptions]="{ standalone: true }" placeholder="سيارة ذوي قدرات خاصة"></ng-select>
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="Details">التفاصيل</label>
+                        <span *ngIf="Details.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="Details.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <input type="text" #Details="ngModel" required id="Details" class="form-control" [(ngModel)]="detail" [ngModelOptions]="{ standalone: true }" placeholder="التفاصيل">
+                </div>
+                <div class="form-group col-lg-4 mt-4">
+                    <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                        <label for="EngineCapacity">سعة المحرك</label>
+                        <span *ngIf="EngineCapacity.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                            <div *ngIf="EngineCapacity.errors?.['required']">
+                                *
+                            </div>
+                        </span>
+                    </div>
+                    <ng-select #EngineCapacity="ngModel" required id="EngineCapacity" class="form-control-select" [items]="engineCapacityArr" bindLabel="text" bindValue="text" [(ngModel)]="engineCapacity" [ngModelOptions]="{ standalone: true }" placeholder="سعة المحرك"></ng-select>
+                </div>
+
+
+            </div>
+        
+        </div>
+        <div class="modal-footer">
+            <button (click)="addNewCar()" [disabled]="AdType.invalid || Condition.invalid || Price.invalid || Fuel.invalid || Year.invalid || Model.invalid || Brand.invalid || TransmissionType.invalid || Color.invalid || Details.invalid || EngineCapacity.invalid || photo == undefined || Disabled.invalid" class="btn btn-primary" type="button">إضافة</button>
+        </div>
+    </div>
+</ng-template>
+<ng-template #deleteCarModal let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">حذف السيارة</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            هل أنت متأكد من حذف السيارة؟
+        </div>
+        <div class="modal-footer">
+            <button (click)="onDeleteCar()" class="btn btn-danger" type="button">حذف</button>
+            <button (click)="modal.close()" class="btn btn-primary" type="button">إغلاق</button>
+
+        </div>
+    </div>
+</ng-template>
+<ng-template #getMobileModal let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">رقم الهاتف</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            {{phoneNumber}}
+        </div>
+        <div class="modal-footer">
+            <button (click)="modal.close()" class="btn btn-primary" type="button">إغلاق</button>
+
+        </div>
+    </div>
+</ng-template>

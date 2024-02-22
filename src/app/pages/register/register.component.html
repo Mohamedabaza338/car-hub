@@ -1,0 +1,104 @@
+<div id="UpperContent">
+    <div class="WithSideBarHolder">
+        <div class="newLogin-contain otb-contain">
+            <div class="newLogin-wrap" style="height: 100vh;">
+                <div class="newLogin-outside">
+                    <strong class="newLogin-title mb-5">تسجيل مستخدم جديد</strong>
+                    <div class="loginWith-wrap" style="width:350px">
+                        <div class="loginWith-item">
+                            <form method="post" action="/ar/go/apply" name="sf_apply_apply_form n_registerApplyForm" id="sf_apply_apply_form">
+                                <!-- user name -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input [ngModelOptions]="{standalone: true}" required [(ngModel)]="userName" #UserName="ngModel" required type="text" class="form-control" placeholder="إسم المستخدم">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="UserName.errors?.['required'] && UserName.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال إسم المستخدم
+                                    </div>
+                                  
+                                </div>
+                                <!-- email -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input autocomplete="off" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" #Email="ngModel" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" type="text" class="form-control" placeholder="البريد الإلكتروني">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Email.errors?.['required'] && Email.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال البريد الإلكتروني
+                                    </div>
+                                    <div *ngIf="Email.errors?.['pattern']" class="text-danger err-span">
+                                        البريد الإلكتروني غير صحيح
+                                    </div>
+                                </div>
+                                <!-- phone number -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input  autocomplete="off" (keypress)="sharedService.numberOnly($event)" [ngModelOptions]="{standalone: true}" required pattern="^01[0125][0-9]{8}$" [(ngModel)]="phone" #Phone="ngModel" required type="tel" class="form-control" placeholder="رقم الهاتف">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Phone.errors?.['required'] && Phone.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال رقم الهاتف
+                                    </div>
+                                    <div *ngIf="Phone.errors?.['pattern']" class="text-danger err-span">
+                                        رقم الهاتف غير صحيح
+                                    </div>
+                                </div>
+                                <!-- Password -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex ;height: 55px;align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input autocomplete="off" minlength="6" required [(ngModel)]="password" #Password="ngModel" type="password" class="form-control" placeholder="كلمة السر">
+                                        </div>
+                                    </div>
+                                    <div  *ngIf="Password.errors?.['required'] && Password.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال كلمة المرور
+                                    </div>
+                                    <div *ngIf="Password.errors?.['minlength']" class="text-danger err-span">
+                                        كلمة المرور يجب ان لا تقل عن 6 احرف 
+                                    </div>
+                                </div>
+                                <!-- UserType -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex ;height: 55px;align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="userType" #UserType="ngModel" required class="form-control">
+                                                <option selected disabled value="0">نوع المستخدم</option>
+                                                <option *ngFor="let userType of userTypesArr" value="{{userType.value}}">{{userType.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <strong class="muted newLogin-info">لدي حساب بالفعل. <span style="cursor: pointer; color: #44609b;" routerLink="/login">إذهب لتسجيل الدخول</span></strong>
+                                <button type="button" (click)="register()" [disabled]="UserName.invalid || Email.invalid || Password.invalid || Phone.invalid || UserType.invalid" class="form-action-btn blue btn">تسجيل مستخدم جديد</button>                       
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="newLogin-inside contain-img">
+                    <div class="newLogin-inside-bg">
+                        <img src="../../../assets/images/login.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

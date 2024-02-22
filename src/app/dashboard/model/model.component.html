@@ -1,0 +1,96 @@
+<div dir="rtl" class="dashboard-container">
+    <app-sidebar></app-sidebar>
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading" class="table-container">
+        <div class="row">
+            <div class="col-lg-10 col-md-8 col-7 search-input-container mt-2">
+                <i style="left: 20px" class="fa fa-search"></i>
+                <input [(ngModel)]="search" (keyup.enter)="onSearch()" class="form-control" type="text" placeholder="بحث في الموديلات">
+            </div>
+            <div (click)="sharedService.open(addModel)" class="col-lg-2 col-md-4 col-5 btn btn-primary mt-2"><i class="fa fa-plus"> </i>إضافة</div>
+        </div>
+        <div *ngIf="modelsArr.length!=0" class="universities-container wrapper-container">
+            <div class="brand-container margin-end-responsive" *ngFor="let model of modelsArr | paginate : {itemsPerPage: limit,currentPage: page,totalItems: total}">
+                <div style="display: flex;align-items:center">
+                    <div >
+                        <span class="brand-name">{{model.modelName}}</span>
+                    </div>
+                </div>
+                <div>
+                    <i (click)="editModel(brand, EditModel)" class="fa fa-edit "></i>
+                </div>
+            </div>
+        </div>
+        <div class="hasNoData" *ngIf="modelsArr.length==0">
+            لا يوجد نتيجة
+        </div>
+        <div class="pagenation-container" *ngIf="modelsArr.length!=0">
+            <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<ng-template #addModel let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel"> إضافة موديل جديد</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group mt-4">
+                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                    <label for="ModelNameAr"> إسم الموديل باللغة العربية</label>
+                    <span *ngIf="ModelNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                        <div *ngIf="ModelNameAr.errors?.['required']">
+                            *
+                        </div>
+                    </span>
+                </div>
+                <input name="ModelNameAr" pattern="[\u0621-\u064A_ ]+" required #ModelNameAr="ngModel" [(ngModel)]="modelNameAr" id="ModelNameAr" type="text" class="form-control">
+                <span *ngIf="ModelNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 10px;position: absolute;">
+                    <div *ngIf="ModelNameAr.errors?.['pattern']">
+                        من فضلك قم بكتابة حروف عربية فقط
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="addNewModel()" [disabled]="ModelNameAr.invalid" class="btn btn-primary" type="button">إضافة</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #EditModel let-modal>
+    <div dir="rtl" *ngIf="editedModel" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">تعديل الموديل</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group mt-4">
+                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                    <label for="EditedModelNameAr">إسم الموديل باللغة العربية</label>
+                    <span *ngIf="EditedModelNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                        <div *ngIf="EditedModelNameAr.errors?.['required']">
+                            *
+                        </div>
+                    </span>
+                </div>
+                <input name="EditedModelNameAr" pattern="[\u0621-\u064A_ ]+" required #EditedModelNameAr="ngModel" [(ngModel)]="editedbrand.nameAr" id="EditedModelNameAr" type="text" class="form-control">
+                <span *ngIf="EditedModelNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 10px;position: absolute;">
+                    <div *ngIf="EditedModelNameAr.errors?.['pattern']">
+                        {{'INVALID-ARABIC-CHARACHTER' | translate}}
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="updatebrand()" [disabled]="EditedModelNameAr.invalid" class="btn btn-primary" type="button">تعديل</button>
+        </div>
+    </div>
+</ng-template>

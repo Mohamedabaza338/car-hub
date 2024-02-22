@@ -1,0 +1,38 @@
+<div dir="rtl" class="dashboard-container">
+    <app-sidebar></app-sidebar>
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading" class="table-container">
+        
+        <div *ngIf="ordersArr.length!=0" style="overflow-x: auto">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>الإسم</th>
+                        <th>الرقم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>السعر</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let order of ordersArr | paginate : { itemsPerPage: limit, currentPage: page, totalItems: total };let i = index">
+                        <td class="number-table"> {{ ((page-1)*10) +i+1}} </td>
+                        <td class="name-table">{{order.user.userName}}</td>
+                        <td>{{ order.user.phoneNumber }}</td>
+                        <td dir="ltr">{{ order.user.email }}</td>
+                        <td dir="ltr"> {{ order.orders.price }} </td>
+                        <td dir="ltr">جديد</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagenation-container">
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+            </div>
+        </div>
+        <div class="hasNoData" *ngIf="ordersArr.length==0">
+            لا يوجد بيانات
+        </div>
+    </div>
+</div>

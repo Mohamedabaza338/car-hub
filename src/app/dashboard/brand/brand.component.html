@@ -1,0 +1,131 @@
+<div dir="rtl" class="dashboard-container">
+    <app-sidebar></app-sidebar>
+
+    <app-loader *ngIf="loading"></app-loader>
+
+    <div *ngIf="!loading" class="table-container">
+        <div class="row">
+            <div class="col-lg-10 col-md-8 col-7 search-input-container mt-2">
+                <i style="left: 20px" class="fa fa-search"></i>
+                <input [(ngModel)]="search" (keyup.enter)="onSearch()" class="form-control" type="text" placeholder="بحث في العلامات التجارية">
+            </div>
+            <div (click)="sharedService.open(addBrand)" class="col-lg-2 col-md-4 col-5 btn btn-primary mt-2"><i class="fa fa-plus"> </i> إضافة </div>
+        </div>
+        <div *ngIf="brandsArr.length!=0" class="universities-container wrapper-container">
+            <div  style="cursor: pointer;" class="brand-container margin-end-responsive" *ngFor="let brand of brandsArr | paginate : {itemsPerPage: limit,currentPage: page,totalItems: total}">
+                <div style="display: flex;align-items:center">
+                    <div class="brand-img-container">
+                        <img class="brand-img" src="https://localhost:7285/{{brand.brandImg}}" alt="">
+                    </div>
+                    <div >
+                        <span class="brand-name">{{brand.typeName}}</span>
+                    </div>
+                </div>
+                <div>
+                    <i routerLink="{{brand.id}}" class="fa fa-eye "></i>
+                    <i (click)="editBrand(brand, EditBrand)" class="fa fa-edit "></i>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="hasNoData" *ngIf="brandsArr.length==0">
+            لا يوجد نتيجة
+        </div>
+        <div class="pagenation-container" *ngIf="brandsArr.length!=0">
+            <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #addBrand let-modal>
+    <div dir="rtl" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel"> إضافة علامة تجارية جديدة</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="first-row-container">
+                <div (click)="Photo.click()" class="image-container" style="cursor: pointer;">
+                    <i *ngIf="!photo" class="fa fa-camera"></i>
+                    <img *ngIf="photo" [src]="url" alt="">
+                </div>
+
+                <div style="margin: 0 15px;position: relative;">
+                    <p style="font-size:14px;margin: 0;"> صورة العلامة التجارية</p>
+                    <p style="font-size:16px;color:#707070; "> رفع صورة 40*40</p>
+                    <input (change)="selectBrandImg($event)" required [(ngModel)]="photo" #Photo type="file" name="" class="inputFile">
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                    <label for="BrandNameAr"> إسم العلامة التجارية باللغة العربية</label>
+                    <span *ngIf="BrandNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                        <div *ngIf="BrandNameAr.errors?.['required']">
+                            *
+                        </div>
+                    </span>
+                </div>
+                <input name="BrandNameAr" pattern="[\u0621-\u064A_ ]+" required #BrandNameAr="ngModel" [(ngModel)]="brandNameAr" id="BrandNameAr" type="text" class="form-control">
+                <span *ngIf="BrandNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 10px;position: absolute;">
+                    <div *ngIf="BrandNameAr.errors?.['pattern']">
+                        من فضلك قم بكتابة حروف عربية فقط
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="addNewBrand()" [disabled]="BrandNameAr.invalid || photo == undefined" class="btn btn-primary" type="button">إضافة</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #EditBrand let-modal>
+    <div dir="rtl" *ngIf="editedBrand" class="modal-content">
+        <div class="modal-header">
+            <div class="modal-custom-header-add">
+                <h5 class="modal-title" id="exampleModalLabel">تعديل علامة تجارية</h5>
+            </div>
+            <div (click)="modal.close()" class="btn-close" aria-label="Close"> <i class="fa fa-close"></i></div>
+        </div>
+        <div class="modal-body">
+            <div class="first-row-container">
+                <div (click)="PhotoEdit.click()" class="image-container" style="cursor: pointer;">
+                    <img *ngIf="url" [src]="url" alt="">
+                    <img *ngIf="!url" src="https://localhost:7285/{{editedBrand.brandImg}}" alt="">
+                </div>
+                <div style="margin: 0 15px;position: relative;">
+                    <p style="font-size:14px;margin: 0;">صورة العلامة التجارية</p>
+                    <p style="font-size:16px;color:#707070;"> رفع صورة 40*40</p>
+                    <input (change)="selectBrandImg($event)" required [(ngModel)]="photo" #PhotoEdit type="file" name="" class="inputFile">
+                </div>
+            </div>
+
+
+            <div class="form-group mt-4">
+                <div style="display: flex; flex-wrap: nowrap; height: 30px;">
+                    <label for="EditedBrandNameAr">إسم العلامة التجارية باللغة العربية</label>
+                    <span *ngIf="EditedBrandNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 8px;">
+                        <div *ngIf="EditedBrandNameAr.errors?.['required']">
+                            *
+                        </div>
+                    </span>
+                </div>
+                <input name="EditedBrandNameAr" pattern="[\u0621-\u064A_ ]+" required #EditedBrandNameAr="ngModel" [(ngModel)]="editedBrand.typeName" id="EditedBrandNameAr" type="text" class="form-control">
+                <span *ngIf="EditedBrandNameAr.invalid" class="alert" style="color: red; white-space: nowrap;line-height: 0; padding: 0; margin-top: 10px;position: absolute;">
+                    <div *ngIf="EditedBrandNameAr.errors?.['pattern']">
+                        من فضلك قم بكتابة حروف عربية فقط
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button (click)="updatebrand()" [disabled]="EditedBrandNameAr.invalid" class="btn btn-primary" type="button">تعديل</button>
+        </div>
+    </div>
+</ng-template>

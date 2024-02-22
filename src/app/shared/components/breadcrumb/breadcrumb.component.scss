@@ -1,0 +1,47 @@
+.breadcrumb-area {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+.breadcrumb-area .breadcrumbs {
+    padding-top: 84px;
+    padding-bottom: 38px;
+}
+.breadcrumb-area .breadcrumbs h1 {
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    text-transform: capitalize;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+.breadcrumb-botton {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.breadcrumb-botton ul {
+    text-align: center;
+    background: #233588;
+    display: inline-block;
+    padding: 8px 15px 8px;
+}
+.breadcrumb-botton ul li {
+    display: inline-block;
+    margin: 0 3px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 20px;
+}
+.breadcrumb-botton ul li a {
+    transition: all 500ms ease;
+    color: #ffffff;
+}
+.breadcrumb-botton ul li.active {
+    color: #fff;
+}

@@ -1,0 +1,739 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+.router-wrapper  {
+    position:  relative;
+    overflow:  hidden;
+    width:  100vw;
+    height:  calc(100%  -  47px);
+    perspective:  1200px;
+    transform-style:  preserve-3d;
+}
+.boxed_wrapper {
+    background: #fff none repeat scroll 0 0;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 320px;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+:host  {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #60d7a9;
+}
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+a {
+    color: #000;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+body{
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #848484;
+    line-height: 26px;
+    font-weight: 300;
+}
+.row{
+    flex-direction: row-reverse !important;
+    width: 100%;
+    margin: 0;
+}
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a, a:hover, a:active, a:focus {
+    transition: all 0.5s ease 0s;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+    color: #222222;
+    margin: 0;
+}
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.scrolling{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    width: 100%;
+}
+::-webkit-scrollbar {
+    display: none; 
+}
+
+.sec-title {
+    margin-top: -5px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.sec-title h1 {
+    color: #222222;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: none;
+}
+.sec-title .border.center {
+    margin: 11px auto 0;
+}
+
+.sec-title .border {
+    width: 80px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: transparent;
+    height: 5px;
+    margin: 11px 0 0;
+}
+.sec-title .border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title .border:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title p {
+    color: #848484;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 40px 0 0;
+    line-height: 30px;
+}
+.sec-title {
+    margin-top: -5px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.sec-title h1 {
+    color: #222222;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: none;
+}
+.sec-title .border.center {
+    margin: 11px auto 0;
+}
+
+.sec-title .border {
+    width: 80px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: transparent;
+    height: 5px;
+    // margin: 11px 0 0;
+}
+.sec-title .border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title .border:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title p {
+    color: #848484;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 40px 0 0;
+    line-height: 30px;
+}
+
+#toast-container > div {
+    opacity:1;
+}
+
+
+////////////////////////////////////////////////DASHBOARD
+/* You can add global styles to this file, and also import other style files */
+
+// @import "./assets/scss/style.scss"
+@import "~@ng-select/ng-select/themes/default.theme.css";
+html,
+body {
+    height: 100%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Montserrat";
+}
+
+.row {
+    margin: 0 !important;
+}
+
+$primary-color :#233588;
+$grey-color:#EEEDFD;
+$secondary-color: #5D9FE3;
+$pink :#EE284B;
+.dashboard-container {
+    display: flex;
+    app-side-bar {
+        width: 210px;
+        padding: 0;
+    }
+    app-loader {
+        width: 100%;
+    }
+}
+
+.row>.search-input-container {
+    padding-inline-start: 0 !important;
+}
+
+.table-container {
+    background-color: #F5F5F5;
+    padding: 40px;
+    width: calc(100vw - 210px);
+    .hasNoData {
+        margin-top: 15%;
+        color: #2C7FB2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .search-input-container {
+        position: relative;
+        input {
+            padding-inline-start: 40px;
+            background-color: white;
+            border: none;
+        }
+         ::placeholder {
+            color: #C2C2C2;
+            font-size: 14;
+        }
+        .fa-search {
+            position: absolute;
+            inset-inline-start: 20px;
+            writing-mode: horizontal-tb;
+            top: 28%;
+            font-size: 14px;
+            color: #C2C2C2;
+        }
+    }
+}
+
+.pages-container {
+    min-height: 100vh;
+    padding: 20px;
+    background-color: white;
+    .hasNoData {
+        margin-top: 7%;
+        color: #2C7FB2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    table {
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .row>.search-input-container {
+        padding: 0 !important;
+    }
+    .search-input-container {
+        position: relative;
+        input {
+            padding-inline-start: 40px;
+            background-color: white;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: none;
+        }
+         ::placeholder {
+            color: #C2C2C2;
+            font-size: 14;
+        }
+        .fa-search {
+            position: absolute;
+            inset-inline-start: 20px;
+            writing-mode: horizontal-tb;
+            top: 28%;
+            font-size: 14px;
+            color: #C2C2C2;
+        }
+    }
+    .page-container {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width:800px) {
+    .dashboard-container {
+        flex-wrap: wrap;
+        app-side-bar {
+            width: 100vw !important;
+        }
+        .table-container {
+            width: 100vw !important;
+            padding: 20px;
+        }
+    }
+    .pages-container {
+        padding: 0;
+        .page-container {
+            padding: 30px;
+            margin: 0;
+        }
+        app-header {
+            display: none;
+        }
+    }
+}
+
+.btn-primary {
+    color: white;
+    border: none !important;
+    background-image: linear-gradient( $primary-color, $secondary-color);
+}
+
+//pagenation
+.pagenation-container {
+    // position: fixed;
+    // bottom: 25px;
+    // right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    margin-top: 50px;
+}
+
+.ngx-pagination .current {
+    background: $primary-color !important;
+    border-radius: 50%;
+}
+
+//modal
+.modal-header {
+    border: none !important;
+}
+
+.modal-header .btn-close {
+    position: absolute;
+    inset-inline-end: 25px;
+    writing-mode: horizontal-tb;
+    top: -4px;
+    background: none;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 0.4rem;
+    height: 0.4rem;
+    color: red;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-custom-header-add {
+    color: $primary-color;
+    border-bottom: 1px solid $pink;
+    width: 100%;
+    padding-bottom: 10px;
+    .modal-title {
+        font-size: 16;
+    }
+}
+
+.modal-footer {
+    border: none !important;
+}
+
+//delete modal
+.delete-modal-header {
+    background-color: #FF5251;
+    color: white;
+}
+
+// filterButton
+.filter {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 40px !important;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+//page-title
+.page-title {
+    color: $primary-color;
+    font-size: 18px;
+    border-bottom: 1px solid $pink;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.btn-cancel {
+    background-color: #E4E4E4 !important;
+    font-weight: 600 !important;
+}
+
+//table
+table {
+    border: 1px solid #dee2e6;
+    margin-top: 50px;
+    white-space: nowrap;
+    tbody td {
+        color: #707070;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .thead-light {
+        background-color: #dee2e6;
+        text-align: center
+    }
+    tr {
+        text-align: center
+    }
+    th {
+        color: #5E5873;
+        font-size: 14px;
+    }
+    .number-table {
+        color: $pink;
+        font-weight: bold;
+    }
+    .name-table {
+        color: $primary-color;
+        font-weight: bold;
+    }
+    .fa-trash {
+        color: red;
+        margin-inline-start: 5px;
+        cursor: pointer;
+    }
+    .fa-edit {
+        color: #919EFA;
+        cursor: pointer;
+    }
+}
+
+.view-action-link {
+    color: #5E5873;
+    margin-inline-end: 5px;
+}
+
+//breadcrumb
+.breadcrumb-action {
+    justify-content: space-between;
+    align-items: center;
+    .actions {
+        width: fit-content;
+        padding: 0;
+        .delete-btn {
+            color: red;
+            background-color: rgba($color: red, $alpha: .1);
+        }
+        .edit-btn {
+            color: #919EFA;
+            margin: 0px 5px;
+            background-color: #78787814;
+        }
+    }
+}
+
+ul.breadcrumb {
+    width: fit-content;
+    list-style: none;
+    margin: 0;
+}
+
+
+/* Display list items side by side */
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6E6B7B;
+}
+
+
+/* Add a slash symbol (/) before/behind each list item */
+
+ul.breadcrumb li:before {
+    padding: 5px;
+    color: #6E6B7B;
+    content: ">\00a0";
+}
+
+
+/* Add a color to all links inside the list */
+
+ul.breadcrumb li a {
+    color: $pink;
+    text-decoration: none;
+}
+
+
+/* Add a color on mouse-over */
+
+ul.breadcrumb li a:hover {
+    color: rgb(1, 68, 126);
+    text-decoration: underline;
+}
+//margin between subject and universiteies
+.margin-end-responsive{
+    margin: 5px 40px;
+}
+@media (max-width:1430px) {
+    .margin-end-responsive{
+        margin: 5px 30px;
+    }
+}
+@media (max-width:1375px) {
+    .margin-end-responsive{
+        margin: 5px 25px;
+    }
+}
+@media (max-width:1340px) {
+    .margin-end-responsive{
+        margin: 5px 15px;
+    }
+}
+@media (max-width:1280px) {
+    .margin-end-responsive{
+        margin-bottom: 10px ;
+        margin-inline-start: 5px;
+    }
+}
+@media (max-width:1250px) {
+    .margin-end-responsive{
+        margin-bottom: 10px ;
+        margin-inline-start: 1px;
+    }
+}
+@media (max-width:1235px) {
+    .margin-end-responsive{
+        margin: 5px 66px !important;   
+    }
+}
+@media (max-width:1150px) {
+    .margin-end-responsive{
+        margin: 5px 30px !important;   
+    }
+}
+@media (max-width:800px) {
+    .margin-end-responsive{
+        margin: 5px 25px !important;   
+        
+    }
+}
+@media (max-width:720px) {
+    .margin-end-responsive{
+        margin-inline-start: 10px !important;
+    }
+}
+@media (max-width:635px) {
+    .wrapper-container{
+        justify-content: center !important;
+    }
+    .margin-end-responsive{
+        margin-inline-start: 0px !important;
+    }
+}
+
+.margin-website-responsive{
+    margin: 5px 21px;
+}
+@media (max-width:1430px) {
+    .margin-website-responsive{
+        margin: 5px 15px;
+    }
+}
+@media (max-width:1375px) {
+    .margin-website-responsive{
+        margin: 5px 12px;
+    }
+}
+@media (max-width:1340px) {
+    .margin-website-responsive{
+        margin: 5px 5px;
+    }
+}
+@media (max-width:1280px) {
+    .margin-website-responsive{
+        margin: 5px 50px;
+    }
+}
+@media (max-width:1250px) {
+    .margin-website-responsive{
+        margin: 5px 35px;
+    }
+}
+
+@media (max-width:1150px) {
+    .margin-website-responsive{
+        margin: 5px 20px ;   
+    }
+}
+@media (max-width:1060px) {
+    .margin-website-responsive{
+        margin: 5px 10px ;   
+    }
+}
+@media (max-width:1000px) {
+    .margin-website-responsive{
+        margin: 5px 5px ;   
+    }
+}
+@media (max-width:970px) {
+    .margin-website-responsive{
+        margin: 5px 60px ;   
+    }
+}
+@media (max-width:880px) {
+    .margin-website-responsive{
+        margin: 5px 40px ;   
+    }
+}
+@media (max-width:800px) {
+    .margin-website-responsive{
+        margin: 5px 25px ;   
+        
+    }
+}
+@media (max-width:760px) {
+    .margin-website-responsive{
+        margin: 5px 15px ;   
+        
+    }
+}
+@media (max-width:720px) {
+    .margin-website-responsive{
+        margin: 5px 5px ;   
+
+    }
+}
+@media (max-width:680px) {
+    .wrapper-website-container{
+        justify-content: center !important;
+    }
+    .margin-website-responsive{
+        margin: 5px 0px;
+    }
+}
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+input.ng-invalid.ng-touched{
+    border-color: red;
+}
+.ng-select.ng-invalid.ng-touched .ng-select-container{
+    border-color: red;
+}
+/* Arrow Color */
+.ng-select.ng-invalid.ng-touched .ng-arrow-wrapper .ng-arrow{
+    border-color: red transparent transparent
+}
+/* Placeholder Color */
+.ng-select.ng-invalid.ng-touched .ng-select-container .ng-placeholder{
+    color: red;
+}
+.form-control-danger{
+    border: 1px solid red;
+
+}
+
+table {
+    border: 1px solid #dee2e6;
+    margin-top: 50px;
+    white-space: nowrap;
+    tbody td {
+        color: #707070;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .thead-light {
+        background-color: #dee2e6;
+        text-align: center
+    }
+    tr {
+        text-align: center
+    }
+    th {
+        color: #5E5873;
+        font-size: 14px;
+    }
+    .number-table {
+        color: #EE284B;
+        font-weight: bold;
+    }
+    .name-table {
+        color: #2C7FB2;
+        font-weight: bold;
+    }
+    .fa-trash {
+        color: red;
+        margin-inline-start: 5px;
+        cursor: pointer;
+    }
+    .fa-edit {
+        color: #919EFA;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,39 @@
+<section class="mainmenu-area style-three stricky">
+    <div class="container">
+        <div class="row" style="justify-content: space-between;">
+            <div  style="width: fit-content; display: flex; align-items: center;">
+                <button *ngIf="!userId" routerLink="/login" class=" btn btn-primary" style="height: fit-content;">تسجيل الدخول</button>
+                <button *ngIf="userId" (click)="logOut()" class=" btn btn-primary" style="height: fit-content;">تسجيل الخروج</button>
+
+            </div>
+
+            <div class="col-lg-8 clearfix">
+                <nav class="main-menu pull-right" style="float: right;">
+                    <div class="navbar-collapse  clearfix">
+                        <ul class="navigation clearfix">
+                            <li><a routerLink="/contact-us">تواصل معنا</a></li>
+                            <li class="dropdown"><a >من نحن</a>
+                                <ul>
+                                    <li><a style="color: black;" routerLink="/about-us">عن كار هاب</a></li>
+                                    <li><a  style="color: black;" routerLink="/meet-our-experts">عملائنا من معارض السيارات</a></li>
+                                    <li><a style="color: black;" routerLink="/questions-and-answers">سؤال وجواب</a></li>
+                                </ul>
+                                <div class="dropdown-btn"></div>
+                            </li>
+                            <li class="dropdown"><a>المتجر</a>
+                                <ul>
+                                    <li><a  style="color: black ;"routerLink="/shop">المتجر</a></li>
+
+                                    <li><a  style="color: black ;"routerLink="/car-shop">السيارات المنشورة</a></li>
+                                    <li><a style="color: black;" routerLink="/my-favourite">قائمة المفضلة لدي</a></li>
+                                </ul>
+                                <div class="dropdown-btn"></div>
+                            </li>
+                            <li class="current"><a routerLink="/">الصفحة الرئيسية</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>   
+        </div>
+    </div>
+</section>

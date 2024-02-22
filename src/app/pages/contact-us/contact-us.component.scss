@@ -1,0 +1,149 @@
+.get-touch-area {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.get-touch-area .single-item {
+    border: 1px solid #f4f4f4;
+    display: block;
+    padding: 39px 20px 32px;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+}
+.get-touch-area .single-item .icon-holder {
+    padding-bottom: 25px;
+}
+.get-touch-area .single-item .icon-holder span:before {
+    color: #233588;
+    font-size: 50px;
+    line-height: 50px;
+}
+.get-touch-area .single-item .text-holder h3 {
+    color: #222222;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.get-touch-area .single-item .text-holder .border {
+    height: 1px;
+    width: 60px;
+    background: #f4f4f4;
+    display: inline-block;
+}
+.get-touch-area .single-item .text-holder p {
+    margin: 15px 0 0;
+}
+.contact-form-area {
+    padding-bottom: 80px;
+}
+.contact-form-area .inner-content {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.contact-form-area .sec-title {
+    padding-bottom: 40px;
+}
+.sec-title {
+    margin-top: -5px;
+    padding-bottom: 40px;
+    position: relative;
+}
+.contact-form-area .sec-title h1 {
+    font-size: 30px;
+}
+
+.sec-title h1 {
+    color: #222222;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    text-transform: none;
+}
+.sec-title .border {
+    width: 80px;
+    position: absolute;
+    // left: 0;
+    overflow: hidden;
+    display: block;
+    background: transparent;
+    height: 5px;
+    margin: 11px 0 0;
+}
+.sec-title .border:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.sec-title .border:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 1px;
+    background: #233588;
+    content: "";
+}
+.contact-form-area .contact-form form input[type="text"], .contact-form-area .contact-form form input[type="email"], .contact-form-area .contact-form form textarea ,.contact-form-area .contact-form form input[type="tel"]{
+    background: #ffffff;
+    border: 1px solid #f4f4f4;
+    color: #999999;
+    display: block;
+    font-size: 16px;
+    height: 55px;
+    margin-bottom: 25px;
+    padding: 0 20px;
+    width: 100%;
+    transition: all 500ms ease;
+    text-align: right;
+}
+.contact-form-area .contact-form form button {
+    background: #233588;
+    width: 180px;
+    padding: 13px 0 12px;
+    border-color: #233588;
+    float: left;
+}
+
+.bgclr-1 {
+    background: #2acb35;
+    border: 2px solid #2acb35;
+    color: #ffffff;
+}
+.thm-btn {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 500ms ease;
+    font-family: 'Nunito', sans-serif;
+    display: block;
+    border-radius: 30px;
+    padding: 12px 25px 10px;
+    transition: all 500ms ease;
+}
+.contact-form-right .working-hours {
+    overflow: hidden;
+    display: block;
+    margin-top: -14px;
+}
+.contact-form-right .working-hours li {
+    line-height: 42px;
+    color: #848484;
+    font-size: 16px;
+    font-weight: 300;
+}
+.contact-form-right .working-hours li span {
+    float: right;
+}
+
+.err-span{
+    position: absolute;
+    top: 90px;
+}

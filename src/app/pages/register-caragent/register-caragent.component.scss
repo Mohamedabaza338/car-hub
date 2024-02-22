@@ -1,0 +1,205 @@
+#NoSideBarHolder, .WithSideBarHolder {
+    box-sizing: border-box;
+    display: block;
+    width: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    border-radius: 5px;
+}
+@media (min-width: 979px){
+    .WithSideBarHolder {
+        width: 100vw!important;
+        height: 100vh !important;
+    }
+}
+.WithSideBarHolder {
+    box-sizing: border-box;
+    background: #fff;
+    height: auto;
+    padding: 15px;
+}
+.newLogin-contain {
+    box-sizing: border-box;
+    margin: -15px;
+}
+.newLogin-contain .newLogin-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newLogin-contain * {
+    box-sizing: border-box;
+}
+.newLogin-contain .newLogin-wrap .newLogin-outside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.newLogin-contain * {
+    box-sizing: border-box;
+}
+.newLogin-contain.otb-contain .newLogin-title {
+    margin-bottom: 0;
+}
+.newLogin-contain .newLogin-title {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color: #4a4a4a;
+    margin-bottom: 24px;
+}
+.newLogin-contain .newLogin-input-wrap:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.newLogin-contain .newLogin-input-wrap {
+    border-radius: 5px;
+    position: relative;
+}
+.newLogin-contain .newLogin-input-wrap.inputDiv .newLogin-icon {
+    border-right: 0;
+    border-left: 1px solid #eaeaea;
+}
+
+.newLogin-contain .newLogin-input-wrap.inputDiv .newLogin-icon {
+    border-right: 1px solid #eaeaea;
+}
+.newLogin-contain .newLogin-input-wrap .newLogin-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+.newLogin-contain .newLogin-icon-in {
+    color: #ababab;
+    font-size: 17px;
+}
+.material-icons {
+    direction: rtl;
+}
+.newLogin-contain * {
+    box-sizing: border-box;
+}
+.material-icons {
+    font-family: material icons!important;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+.newLogin-contain .newLogin-input-wrap .newLogin-input {
+    width: calc(100% - 45px);
+    flex: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 45px;
+}
+.newLogin-contain .newLogin_input_style {
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    border: 0!important;
+    border-radius: 0;
+    margin: 0;
+    background-color: #fff!important;
+    padding: 0 16px;
+    box-shadow: unset!important;
+}
+.newLogin-contain .newLogin-info {
+    display: block;
+    margin-bottom: 24px;
+    margin-top: -8px;
+}
+
+.newLogin-contain * {
+    box-sizing: border-box;
+}
+.muted {
+    color: #999;
+}
+strong {
+    font-weight: 700;
+    text-align: right;
+}
+.newLogin-contain .form-action-btn {
+    border-radius: 5px;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 0!important;
+}
+.form-action-btn.blue {
+    background-color: #44609b;
+    color: white;
+    font-weight: bold;
+}
+
+
+@media (min-width: 768px){
+
+    .newLogin-contain .newLogin-wrap .newLogin-inside {
+        border-left: 0;
+        border-right: 1px solid #ededed;
+    }
+}
+@media (min-width: 768px){
+    .newLogin-contain .newLogin-wrap .newLogin-inside {
+        border-left: 1px solid #ededed;
+    }
+}
+.newLogin-contain .newLogin-wrap .newLogin-inside {
+    background-color: #fdfdff;
+}
+.newLogin-contain .newLogin-wrap .newLogin-outside, .newLogin-contain .newLogin-wrap .newLogin-inside {
+    width: 100%;
+    // padding: 48px 64px;
+}
+.newLogin-contain .newLogin-wrap .newLogin-inside .newLogin-inside-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.err-span{
+    position: absolute; 
+    right: 45px;
+    bottom: -10px;
+}
+.first-row-container {
+    display: flex;
+    align-items: center;
+    .image-container {
+        width: 75px;
+        height: 75px;
+        border: 1px solid #E4E4E4;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        position: relative;
+        color: #707070;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.faq-content-area {
+    padding-bottom: 50px;
+    padding-top: 80px;
+}
+.faq-content-area .single-item {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #f4f4f4;
+    display: block;
+    padding: 31px 28px 27px;
+    margin-bottom: 30px;
+    transition: all 500ms ease;
+}
+.faq-content-area .single-item .title {
+    border-bottom: 1px solid #f4f4f4;
+    margin: 0 0 19px;
+    position: relative;
+    z-index: 1;
+    padding: 0 0 20px;
+    transition: all 500ms ease;
+}
+.faq-content-area .single-item .title::before {
+    background: rgba(0, 0, 0, 0) url(../../../assets/images/q.png) repeat scroll 0 0;
+    content: "";
+    height: 42px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: -10px;
+    width: 34px;
+    z-index: -1;
+}
+.faq-content-area .single-item .title h3 {
+    color: #222222;
+    font-size: 20px;
+    font-weight: 700;
+    z-index: 5;
+}
+.faq-content-area .single-item .text p {
+    margin: 0;
+}

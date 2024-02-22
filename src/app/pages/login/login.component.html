@@ -1,0 +1,60 @@
+<div id="UpperContent">
+    <div class="WithSideBarHolder">
+        <div class="newLogin-contain otb-contain">
+            <div class="newLogin-wrap" style="height: 100vh;">
+                <div class="newLogin-outside">
+                    <strong class="newLogin-title mb-5">تسجيل الدخول </strong>
+                    <div class="loginWith-wrap">
+                        <div class="loginWith-item">
+                            <form style="width: 400px;" method="post" action="/ar/go/apply" name="sf_apply_apply_form n_registerApplyForm" id="sf_apply_apply_form">
+                                
+                                <!-- email -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input autocomplete="off" name="email" [ngModelOptions]="{standalone: true}" [(ngModel)]="email" #Email="ngModel" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" type="text" class="form-control" placeholder="البريد الإلكتروني">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Email.errors?.['required'] && Email.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال البريد الإلكتروني
+                                    </div>
+                                    <div *ngIf="Email.errors?.['pattern']" class="text-danger err-span">
+                                        البريد الإلكتروني غير صحيح
+                                    </div>
+                                </div>
+                               
+                                <!-- Password -->
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex ;height: 55px;align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-lock"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input autocomplete="off" minlength="6" required [(ngModel)]="password" #Password="ngModel" type="password" class="form-control" placeholder="كلمة السر">
+                                        </div>
+                                    </div>
+                                    <div  *ngIf="Password.errors?.['required'] && Password.touched" class="text-danger err-span">
+                                        من فضلك قم بإدخال كلمة المرور
+                                    </div>
+                                    <div *ngIf="Password.errors?.['minlength']" class="text-danger err-span">
+                                        كلمة المرور يجب ان لا تقل عن 6 احرف 
+                                    </div>
+                                </div>
+                                <button type="button" (click)="login()" [disabled]="Email.invalid || Password.invalid " class="form-action-btn blue btn">تسجيل الدخول </button>                       
+                                <p>ليس لدي حساب؟ <span style="color: #44609b;cursor:pointer" routerLink="/signUp"> سجل الآن</span></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="newLogin-inside contain-img">
+                    <div class="newLogin-inside-bg">
+                        <img src="../../../assets/images/login.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

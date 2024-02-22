@@ -1,0 +1,85 @@
+<div id="UpperContent">
+    <div class="WithSideBarHolder">
+        <div class="newLogin-contain otb-contain">
+            <div class="newLogin-wrap">
+                <div class="newLogin-outside">
+                    <strong class="newLogin-title mb-5">تسجيل معرض سيارات جديد</strong>
+                    <div class="loginWith-wrap m-auto" style="width: 70%;">
+                        <div class="loginWith-item">
+                            <form  method="post" action="/ar/go/apply" name="sf_apply_apply_form n_registerApplyForm" id="sf_apply_apply_form">
+                                <google-map #mapp height="200px" width="100%" [center]="center" (centerChanged)="moving(mapp);"> 
+                                    
+                                    <map-marker [position]="loc"
+                                                [options]="markerOptions"></map-marker>
+                
+                
+                                </google-map>
+
+                                <div class="first-row-container mt-5">
+                                    <div (click)="Photo.click()" class="image-container" style="cursor: pointer;">
+                                        <i *ngIf="!photo" class="fa fa-camera"></i>
+                                        <img *ngIf="photo" [src]="url" alt="">
+                                    </div>
+                    
+                                    <div style="margin: 0 15px;position: relative;">
+                                        <p style="font-size:14px;margin: 0;"> صورة العلامة التجارية</p>
+                                        <p style="font-size:16px;color:#707070; "> رفع صورة 40*40</p>
+                                        <input (change)="selectCarAgentImg($event)" required [(ngModel)]="photo" #Photo type="file" name="" class="inputFile">
+                                    </div>
+                                </div>
+                                <div class="newLogin-input-wrap inputDiv mt-3">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input [ngModelOptions]="{standalone: true}" required [(ngModel)]="address" #Address="ngModel" required type="text" class="form-control" placeholder="العنوان">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Address.errors?.['required']" class="text-danger err-span">
+                                        من فضلك قم بإدخال العنوان
+                                    </div>
+                                </div>
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input  autocomplete="off" (keypress)="sharedService.numberOnly($event)" [ngModelOptions]="{standalone: true}" required [(ngModel)]="latitude" #Latitute="ngModel" required type="number" class="form-control" placeholder="خط الطول">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Latitute.errors?.['required'] " class="text-danger err-span">
+                                        من فضلك قم بإدخال خط الطول
+                                    </div>
+                                    
+                                </div>
+                                <div class="newLogin-input-wrap inputDiv">
+                                    <div style="display: flex; height: 55px; align-items: flex-start;">
+                                        <div class="newLogin-icon">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                        <div class="newLogin-input">
+                                            <input  autocomplete="off" (keypress)="sharedService.numberOnly($event)" [ngModelOptions]="{standalone: true}" required [(ngModel)]="longitude" #Longitude="ngModel" required type="number" class="form-control" placeholder=" دائرة العرض">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="Longitude.errors?.['required'] " class="text-danger err-span">
+                                        من فضلك قم بإدخال دائرة العرض
+                                    </div>
+                                    
+                                </div>
+                               
+                                <button type="button" (click)="register()" [disabled]="Address.invalid || Latitute.invalid || Longitude.invalid || photo == undefined" class="form-action-btn blue btn">تسجيل معرض سيارات جديد</button>                       
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="newLogin-inside contain-img">
+                    <div class="newLogin-inside-bg">
+                        <img src="../../../assets/images/verifyimg.png">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

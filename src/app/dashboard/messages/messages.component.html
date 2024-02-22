@@ -1,0 +1,39 @@
+<div dir="rtl" class="dashboard-container">
+    <app-sidebar></app-sidebar>
+    <app-loader *ngIf="loading"></app-loader>
+
+    <div *ngIf="!loading" class="table-container">
+        
+        <div *ngIf="messagesArr.length!=0" style="overflow-x: auto">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>الإسم</th>
+                        <th>الرقم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الموضوع</th>
+                        <th>المحتوي</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let message of messagesArr | paginate : { itemsPerPage: limit, currentPage: page, totalItems: total };let i = index">
+                        <td class="number-table"> {{ ((page-1)*10) +i+1}} </td>
+                        <td class="name-table">{{message.name}}</td>
+                        <td>{{ message.phone }}</td>
+                        <td dir="ltr">{{ message.email }}</td>
+                        <td dir="ltr"> {{ message.subject }} </td>
+                        <td dir="ltr">{{ message.message }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagenation-container">
+                <pagination-controls previousLabel="" nextLabel="" (pageChange)="changePage((page = $event))"></pagination-controls>
+            </div>
+        </div>
+        <div class="hasNoData" *ngIf="messagesArr.length==0">
+            لا يوجد رسائل
+        </div>
+    </div>
+</div>

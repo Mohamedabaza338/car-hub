@@ -1,0 +1,102 @@
+.team-page-area {
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+.team-page-area .single-team-member {
+    display: block;
+    padding-bottom: 40px;
+}
+.single-team-member .img-holder {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 300px;
+}
+.overlay-style-one {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    color: #ffffff;
+    opacity: 0;
+    -webkit-transform: perspective(400px) rotateX(-90deg);
+    -moz-transform: perspective(400px) rotateX(-90deg);
+    -ms-transform: perspective(400px) rotateX(-90deg);
+    -o-transform: perspective(400px) rotateX(-90deg);
+    background: rgba(35, 53, 136, 0.9);
+    transform-origin: top;
+    transition: all 0.5s;
+}
+.single-team-member:hover .img-holder .overlay-style-one {
+    opacity: 1;
+    transform: perspective(400px) rotateX(0deg);
+}
+.single-team-member .img-holder .overlay-style-one .box .content ul li a:hover i {
+    background: #f8ec30;
+}
+.overlay-style-one .box {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.overlay-style-one .box .content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.single-team-member .img-holder .overlay-style-one .box .content ul {
+    overflow: hidden;
+}
+.single-team-member .img-holder .overlay-style-one .box .content ul li {
+    display: inline-block;
+    margin: 0 3px;
+}
+.single-team-member .img-holder .overlay-style-one .box .content ul li a i {
+    background: rgba(255, 255, 255, 0.95);
+    height: 40px;
+    width: 40px;
+    display: block;
+    border-radius: 50%;
+    color: #172b42;
+    font-size: 13px;
+    line-height: 42px;
+    transition: all 500ms ease;
+}
+.single-team-member .text-holder {
+    background: #ffffff;
+    padding-top: 22px;
+    padding-bottom: 10px;
+}
+.single-team-member .text-holder h3 {
+    color: #222222;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: none;
+    margin: 0 0 3px;
+}
+.single-team-member .text-holder span {
+    color: #233588;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+}
+.single-team-member .text-holder .text {
+    padding-top: 12px;
+}
+.single-team-member .text-holder .text p {
+    margin: 0;
+}
+.single-team-member .bottom {
+    border-top: 1px solid #f4f4f4;
+    padding-top: 17px;
+    margin-top: 18px;
+}
+.single-team-member .bottom ul li i {
+    display: inline-block;
+    padding-right: 8px;
+}
+.check{
+    color: #FFDB33;
+}

@@ -1,0 +1,302 @@
+.top-bar-area {
+    position: relative;
+    z-index: 999;
+    background: #f9f9f9;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+    padding: 8px 0;
+}
+.top-contact-info {
+    overflow: hidden;
+    margin: 6px 0 5px;
+}
+.top-contact-info li {
+    display: inline-block;
+    float: left;
+    padding-right: 25px;
+    color: #b3b3b3;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.top-contact-info li:last-child {
+    padding: 0;
+}
+
+.top-contact-info li span:before {
+    font-size: 16px;
+    line-height: 24px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.top-bar-area .top-right {
+    overflow: hidden;
+}
+.top-bar-area .top-right .social-links {
+    overflow: hidden;
+    // padding-right: 30px;
+    margin: 9px 0;
+}
+.top-bar-area .top-right .social-links li {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    line-height: 16px;
+}
+a, a:hover, a:active, a:focus {
+    transition: all 0.5s ease 0s;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+}
+.top-bar-area .top-right .social-links li a i {
+    color: #afafb5;
+    font-size: 15px;
+    transition: all 500ms ease;
+}
+.appoinment-button {
+    margin: 0px;
+}
+.appoinment-button a {
+    background: #233588;
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 7px 15px 6px;
+    line-height: initial;
+    border-radius: 3px;
+}
+
+//nav bar
+.mainmenu-area.stricky-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 10000;
+    background: #F7F7F7;
+    z-index: 99999;
+    -webkit-animation-name: menu_sticky;
+    animation-name: menu_sticky;
+    -webkit-animation-duration: 0.60s;
+    animation-duration: 0.60s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+.mainmenu-area {
+    position: relative;
+    z-index: 999999;
+    background: #ffffff;
+}
+.mainmenu-area .logo {
+    display: inline-block;
+    padding-right: 150px;
+    position: relative;
+    height: 60px;
+    margin-top: 20px;
+    background-position: -13px 291px;
+    width: 190px;
+    background-image: url('../../../../assets/images/logo.png')
+}
+.mainmenu-area .logo a {
+    display: inline-block;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+.main-menu {
+    float: right;
+    position: relative;
+}
+.main-menu .navbar-collapse {
+    padding: 0px;
+}
+.main-menu .navigation {
+    float: left;
+    margin: 0;
+    position: relative;
+}
+.main-menu .navigation li {
+    display: inline-block;
+    float: left;
+}
+.main-menu .navigation > li.dropdown > a {
+    margin-right: 27px;
+}
+.main-menu .navigation li a {
+    color: #222222;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    opacity: 1;
+    margin: 40px 18px 40px;
+    position: relative;
+    text-transform: capitalize;
+    transition: all 500ms ease 0s;
+    font-family: 'Nunito', sans-serif;
+}
+.main-menu .navigation > li.dropdown > a:after {
+    font-family: 'FontAwesome';
+    content: "\f107";
+    position: absolute;
+    top: 0;
+    right: -15px;
+    font-size: 14px;
+    transition: all 500ms ease 0s;
+}
+.main-menu .navigation > li > ul {
+    position: absolute;
+    left: 0px;
+    top: 130%;
+    width: 250px;
+    padding: 0px;
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+    transition: all 500ms ease;
+    border-top: 3px solid #233588;
+}
+.main-menu .navigation li {
+    display: inline-block;
+    float: left;
+}
+.main-menu .navigation > li > ul > li {
+    clear: both;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.main-menu .navigation > li > ul > li > a {
+    width: 100%;
+    background: #ffffff;
+    padding: 13px 15px 12px 30px;
+    margin: 0;
+    color: #222222;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: block;
+    float: left;
+    clear: both;
+    position: relative;
+    outline: 0;
+    transition: padding .2s linear;
+    transition: all 500ms ease;
+    font-family: 'Nunito', sans-serif;
+}
+.main-menu .navbar-collapse > ul li.dropdown .dropdown-btn {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    width: 34px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    // background: url(../images/icon/submenu-icon.png) center center no-repeat;
+    background-size: 20px;
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+.main-menu .navigation li {
+    display: inline-block;
+    float: left;
+}
+.main-menu .navigation > li:hover > ul {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+.outer-search-box {
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin: 30px 0;
+    transition: all 500ms ease;
+    border: 1px solid #e7e7e7;
+}
+toggle.active {
+    background: #233588;
+    color: #fff;
+}
+
+.outer-search-box .seach-toggle {
+    background: transparent;
+    color: #afafb5;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
+    padding: 9px 0px;
+    position: relative;
+    text-align: center;
+    transition: all 500ms ease;
+}
+.search-box.now-visible {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-box {
+    background: #233588;
+    border-top: 1px solid #c1c1c1;
+    opacity: 0;
+    padding: 20px;
+    position: absolute;
+    right: 15px;
+    top: 150%;
+    transition: all 500ms ease 0s;
+    visibility: hidden;
+}
+.search-box .form-group {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    min-width: 250px;
+}
+
+
+.search-box .form-group input[type="search"] {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #303443;
+    color: #000;
+    display: block;
+    font-size: 13px;
+    line-height: 24px;
+    position: relative;
+    transition: all 500ms ease 0s;
+    width: 100%;
+    height: 40px;
+    padding-left: 15px;
+    padding-right: 50px;
+}
+.search-box .form-group button, .search-box .form-group input[type="submit"] {
+    background: #303443;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    transition: all 500ms ease 0s;
+}
